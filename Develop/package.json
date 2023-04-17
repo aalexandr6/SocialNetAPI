@@ -1,0 +1,20 @@
+{
+  "name": "socialnetapi",
+  "version": "1.0.0",
+  "description": "Social media API challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "SocialNetAPI"
+  },
+  "author": "aalexandr6",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.4",
+    "pkg": "^5.8.1"
+  }
+}
