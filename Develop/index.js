@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('./config/cnnection');
+const db = require('./config/connection');
 const routes = require('./routes');
 const cwd = process.cwd();
 const app = express();
@@ -10,11 +10,3 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Now live on ${PORT}!`);
     });
-
-
-
-
-
-
-
-
