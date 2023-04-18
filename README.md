@@ -1,4 +1,4 @@
-# SocialNetAPI
+# Social Network API
 
 As a Startup,
 
