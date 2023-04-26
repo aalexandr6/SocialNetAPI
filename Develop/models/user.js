@@ -1,6 +1,6 @@
 //https://mongoosejs.com/docs/schematypes.html
 const { Schema, model } = require("mongoose");
-const UserSchema = new Schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -19,13 +19,13 @@ const UserSchema = new Schema(
     thoughts: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Thought",
+        ref: "thought",
       },
     ],
     friends: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User",
+        ref: "user",
       },
     ],
   },
@@ -39,11 +39,11 @@ const UserSchema = new Schema(
 );
 
 // get total count of friends
-UserSchema.virtual("friendCount").get(function () {
+userSchema.virtual("friendCount").get(function () {
   return this.friends.length;
 });
 
 // User model to the UserSchema
-const User = model("User", UserSchema);
+const User = model("user", userSchema);
 
 module.exports = User;
