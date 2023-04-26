@@ -1,7 +1,37 @@
 //thought,reaction
 //https://mongoosejs.com/docs/schematypes.html
-const { Schema, model } = require("mongoose");
-const ThoughtSchema = new Schema(
+const { Schema, model, Types } = require("mongoose");
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
+    reactionBody: {
+      type: String,
+      required: "enter a reaction!",
+      minlength: 1,
+      maxlength: 200,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      //https://mongoosejs.com/docs/guide.html
+      //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now
+      type: Date,
+      default: Date.now,
+    },
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
+);
+
+const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
@@ -12,60 +42,35 @@ const ThoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      get: (createdAtVal) => dateFormat(createdAtVal),
     },
     username: {
       type: String,
       required: true,
     },
-    reactions: [ReactionSchema],
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
       virtuals: true,
-      getters: true,
     },
     id: false,
   }
 );
 
-// thought model to the ThoughtSchema
-const Thought = model("Thought", ThoughtSchema);
+const Thought = model("thought", thoughtSchema);
 
 // reaction schema
-const ReactionSchema = new Schema(
-  {
-    reactionId: {
-      type: Schema.Types.ObjectId,
-      default: () => new Types.ObjectId(),
-    },
-    reactionBody: {
-      type: String,
-      required: "enter a reaction!",
-      minlength: 1,
-      maxlength: 300,
-    },
-    username: {
-      type: String,
-      required: true,
-    },
-    createdAt: {
-      //https://mongoosejs.com/docs/guide.html
-      type: Date,
-      default: Date.now,
-      //val is the current date
-      get: (createdAtVal) => dateFormat(createdAtVal),
-    },
-  },
-  {
-    toJSON: {
-      getters: true,
-    },
-  }
-);
+reactionSchema.virtual("Dateformat").get(function () {
+  return this.reactions.length;
+});
 
 // get total count of reactions
-ThoughtSchema.virtual("reactionCount").get(function () {
+thoughtSchema.virtual("Dateformat").get(function () {
+  return this.reactions.length;
+});
+
+//reaction virtual
+thoughtSchema.virtual("reactionLength").get(function () {
   return this.reactions.length;
 });
 
