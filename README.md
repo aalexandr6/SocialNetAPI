@@ -1,4 +1,4 @@
-# SocialNetAPI
+# Social Network API
 
 ## Project Description
 
@@ -21,6 +21,7 @@ So that my website can handle large amounts of data.
  THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
  ```
 
+
 ## MongoDB
 
 MongoDB is a NoSQL database that is used to store data as documents. It is a non-relational database that is flexible and scalable. It is a good choice for this project because it allows for the storage of large amounts of data.
@@ -32,3 +33,6 @@ Dateformat is a package that allows for the formatting of dates. It is used in t
 ## Made by
 
 [aalexandr6](https://github.com/aalexandr6) at <aalexanderp6@gmail.com>
+
+ 
+
